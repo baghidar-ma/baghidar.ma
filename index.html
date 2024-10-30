@@ -1,89 +1,157 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baghidar - أفضل العروض للإيجار والشراء</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Best Horses for Sale in Morocco</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        /* CSS Reset */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
-            direction: rtl; /* Right to Left for Arabic text */
+            box-sizing: border-box;
         }
-        header {
-            background-color: #3c8dbc;
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        p {
-            font-size: 1.2rem;
-            margin: 1rem 0;
-            animation: slideIn 1.5s ease-in-out;
-        }
-        .cta {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: #ffcc00;
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
             color: #333;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: background-color 0.3s ease;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .cta:hover {
-            background-color: #e6b800;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            background-color: #3c8dbc;
-            color: white;
-            position: relative;
-            bottom: 0;
+
+        /* Header */
+        header {
             width: 100%;
+            padding: 2em 0;
+            background-color: #FF5A5F;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
+
+        /* Hero section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4em 1em;
+            background: #fff;
+            animation: fadeIn 2s;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            color: #FF5A5F;
+            margin-bottom: 0.5em;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 700px;
+        }
+
+        /* Buttons */
+        .button {
+            margin-top: 1.5em;
+            padding: 1em 2em;
+            font-size: 1em;
+            font-weight: bold;
+            color: #fff;
+            background-color: #FF5A5F;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #ff7b7d;
+        }
+
+        /* Follow Us Section */
+        .follow {
+            margin-top: 3em;
+            padding: 2em 0;
+            width: 100%;
+            background: #f0f0f0;
+            text-align: center;
+        }
+        .follow p {
+            font-size: 1.1em;
+            margin-bottom: 1em;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 2em;
+            padding: 1em 0;
+            background-color: #FF5A5F;
+            color: white;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        /* Keyframes for fade-in animation */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1>مرحبًا بكم في Baghidar</h1>
-        <p>أفضل العروض للإيجار والشراء في المغرب</p>
+        <h2>Best Horses for Sale in Morocco</h2>
     </header>
-    
-    <main>
-        <section>
-            <h2>استكشف عروضنا المميزة!</h2>
-            <p>سواء كنت تبحث عن استئجار منزل أحلامك أو شراء عقار استثماري، فإن Baghidar هو الخيار الأمثل لك.</p>
-            <a href="mailto:abdellatif@baghidar.ma" class="cta">اتصل بنا الآن</a>
-        </section>
-    </main>
-    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Discover the Best Horse Deals in Morocco!</h1>
+        <p>Join our Telegram channel today for the latest offers, best prices, and exclusive notifications. With our AI-validated crawlers, you'll always get the most accurate and trustworthy listings across social media marketplaces!</p>
+        <a href="https://t.me/joinchat/YOUR_TELEGRAM_LINK" class="button">Join Telegram Channel</a>
+    </section>
+
+    <!-- Follow Us Section -->
+    <section class="follow">
+        <p>Follow us on Instagram for more updates and amazing offers!</p>
+        <a href="https://www.instagram.com/YOUR_INSTAGRAM_HANDLE" class="button">Follow us on Instagram</a>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>© 2024 Baghidar - جميع الحقوق محفوظة</p>
+        <p>All rights reserved. Made with ♥ by <a href="mailto:abdellatif@baghidar.ma" style="color: white; text-decoration: underline;">abdellatif@baghidar.ma</a></p>
     </footer>
 
+    <!-- JavaScript for Smooth Scrolling -->
     <script>
-        // Optional JavaScript for additional animations or functionalities
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log("Welcome to Baghidar's landing page!");
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
