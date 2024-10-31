@@ -2,156 +2,203 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Horses for Sale in Morocco</title>
+    <title>🏡 Morocco Real Estate Finder</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* CSS Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .custom-bg {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
         }
-
-        /* Body styling */
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f9;
-            color: #333;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .property-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        /* Header */
-        header {
-            width: 100%;
-            padding: 2em 0;
-            background-color: #FF5A5F;
-            color: white;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        /* Hero section */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 4em 1em;
-            background: #fff;
-            animation: fadeIn 2s;
-        }
-        .hero h1 {
-            font-size: 2.5em;
-            color: #FF5A5F;
-            margin-bottom: 0.5em;
-        }
-        .hero p {
-            font-size: 1.2em;
-            color: #555;
-            max-width: 700px;
-        }
-
-        /* Buttons */
-        .button {
-            margin-top: 1.5em;
-            padding: 1em 2em;
-            font-size: 1em;
-            font-weight: bold;
-            color: #fff;
-            background-color: #FF5A5F;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            text-decoration: none;
-        }
-        .button:hover {
-            background-color: #ff7b7d;
-        }
-
-        /* Follow Us Section */
-        .follow {
-            margin-top: 3em;
-            padding: 2em 0;
-            width: 100%;
-            background: #f0f0f0;
-            text-align: center;
-        }
-        .follow p {
-            font-size: 1.1em;
-            margin-bottom: 1em;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 2em;
-            padding: 1em 0;
-            background-color: #FF5A5F;
-            color: white;
-            font-size: 0.9em;
-            text-align: center;
-        }
-
-        /* Keyframes for fade-in animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Responsive styling */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-            .hero p {
-                font-size: 1em;
-            }
+        .property-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <h2>Best Horses for Sale in Morocco</h2>
-    </header>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-600 mb-4">
+                Morocco Real Estate Explorer
+            </h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Discover your dream property across the beautiful landscapes of Morocco
+            </p>
+        </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Discover the Best Horse Deals in Morocco!</h1>
-        <p>Join our Telegram channel today for the latest offers, best prices, and exclusive notifications. With our AI-validated crawlers, you'll always get the most accurate and trustworthy listings across social media marketplaces!</p>
-        <a href="https://t.me/joinchat/baghidar" class="button">Join Telegram Channel</a>
-    </section>
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Search Section -->
+            <div class="bg-white shadow-xl rounded-lg p-6 custom-bg">
+                <h2 class="text-2xl font-semibold text-white mb-6 text-center">
+                    Property Search
+                </h2>
+                <form id="searchForm" class="space-y-4">
+                    <input 
+                        type="text" 
+                        id="addressInput" 
+                        placeholder="City or Region" 
+                        class="w-full p-3 rounded-lg border-2 border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-400"
+                    >
+                    <div class="flex space-x-2">
+                        <input 
+                            type="number" 
+                            id="minPrice" 
+                            placeholder="Min Price (MAD)" 
+                            class="w-1/2 p-3 rounded-lg border-2 border-orange-200"
+                        >
+                        <input 
+                            type="number" 
+                            id="maxPrice" 
+                            placeholder="Max Price (MAD)" 
+                            class="w-1/2 p-3 rounded-lg border-2 border-orange-200"
+                        >
+                    </div>
+                    <button 
+                        type="submit" 
+                        class="w-full bg-white text-orange-600 p-3 rounded-lg hover:bg-orange-50 transition duration-300 font-bold"
+                    >
+                        Search Properties
+                    </button>
+                </form>
 
-    <!-- Follow Us Section -->
-    <section class="follow">
-        <p>Follow us on Instagram for more updates and amazing offers!</p>
-        <a href="https://www.instagram.com/baghidar.ma" class="button">Follow us on Instagram</a>
-    </section>
+                <div class="mt-6 flex justify-center space-x-4">
+                    <a href="#" class="text-4xl text-pink-600 hover:text-pink-800 transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-4xl text-blue-500 hover:text-blue-700 transition">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </div>
+            </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>All rights reserved. Made with ♥ by <a href="mailto:abdellatif@baghidar.ma" style="color: white; text-decoration: underline;">abdellatif@baghidar.ma</a></p>
-    </footer>
+            <!-- Property List -->
+            <div class="col-span-1 space-y-4 overflow-y-auto max-h-[700px]" id="propertyList">
+                <!-- Properties will be dynamically inserted here -->
+            </div>
 
-    <!-- JavaScript for Smooth Scrolling -->
+            <!-- Map Section -->
+            <div class="col-span-1">
+                <div id='map' class='w-full h-[700px] rounded-lg shadow-xl'></div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // Mapbox Access Token (Replace with your own)
+        mapboxgl.accessToken = 'pk.eyJ1IjoiYmFnaGlkYXIiLCJhIjoiY20yeGkwazE2MDRwODJpc2RvajltZ3huaSJ9.tbUQ1bBjWE7ZtBn-Rq4njw';
+
+        // Synthetic Property Data in Morocco
+        const properties = [
+            {
+                id: 1,
+                title: "Luxurious Marrakech Villa",
+                price: 5000000,
+                lat: 31.6294,
+                lng: -7.9897,
+                description: "Spectacular villa in the heart of Marrakech with traditional Moroccan design",
+                type: "Villa"
+            },
+            {
+                id: 2,
+                title: "Modern Apartment in Casablanca",
+                price: 2500000,
+                lat: 33.5731,
+                lng: -7.6849,
+                description: "Contemporary apartment with ocean views in Casablanca's business district",
+                type: "Apartment"
+            },
+            {
+                id: 3,
+                title: "Historic Riad in Fez Medina",
+                price: 3800000,
+                lat: 34.0209,
+                lng: -5.0415,
+                description: "Beautifully restored traditional Moroccan house in UNESCO World Heritage site",
+                type: "Riad"
+            },
+            {
+                id: 4,
+                title: "Beachfront Property in Agadir",
+                price: 4200000,
+                lat: 30.4278,
+                lng: -9.5981,
+                description: "Stunning beachfront property with direct access to the Atlantic Ocean",
+                type: "Beach House"
+            }
+        ];
+
+        // Initialize Map
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [0, 30],  // Centered on Morocco
+            zoom: 5.5
+        });
+
+        // Add navigation control
+        map.addControl(new mapboxgl.NavigationControl());
+
+        // Render Properties on Map and List
+        function renderProperties(filteredProperties) {
+            const propertyList = document.getElementById('propertyList');
+            propertyList.innerHTML = '';
+
+            // Clear existing markers
+            document.querySelectorAll('.mapboxgl-marker').forEach(marker => marker.remove());
+
+            filteredProperties.forEach(prop => {
+                // Create map marker
+                new mapboxgl.Marker()
+                    .setLngLat([prop.lng, prop.lat])
+                    .setPopup(new mapboxgl.Popup().setHTML(`
+                        <h3 class="font-bold">${prop.title}</h3>
+                        <p>Price: ${prop.price.toLocaleString()} MAD</p>
+                        <p>${prop.description}</p>
+                    `))
+                    .addTo(map);
+
+                // Create property card
+                const propertyCard = document.createElement('div');
+                propertyCard.className = 'bg-white rounded-lg shadow-md p-6 property-card';
+                propertyCard.innerHTML = `
+                    <h3 class="text-xl font-bold text-orange-600 mb-2">${prop.title}</h3>
+                    <p class="text-gray-600 mb-2">${prop.type}</p>
+                    <p class="text-lg font-semibold mb-4">
+                        ${prop.price.toLocaleString()} MAD
+                    </p>
+                    <p class="text-gray-500">${prop.description}</p>
+                `;
+                propertyList.appendChild(propertyCard);
             });
+
+            // Center map on first property if exists
+            if (filteredProperties.length > 0) {
+                map.flyTo({
+                    center: [filteredProperties[0].lng, filteredProperties[0].lat],
+                    zoom: 8
+                });
+            }
+        }
+
+        // Initial render
+        renderProperties(properties);
+
+        // Search Form Handler
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const minPrice = document.getElementById('minPrice').value || 0;
+            const maxPrice = document.getElementById('maxPrice').value || Infinity;
+
+            const filteredProperties = properties.filter(prop => 
+                prop.price >= minPrice && prop.price <= maxPrice
+            );
+
+            renderProperties(filteredProperties);
         });
     </script>
 </body>
