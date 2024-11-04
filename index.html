@@ -1,277 +1,233 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بغيدار - احصل على إشعارات حول منزل أحلامك</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <title>Baghi Dar - Real Estate Morocco</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Arial', sans-serif;
+            font-family: 'Arial', sans-serif;
         }
 
         body {
-            min-height: 100vh;
-            color: white;
-            line-height: 1.8;
-            overflow-x: hidden;
-            background: linear-gradient(-45deg, #0088cc, #00a2ff, #0062cc, #0051a8);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            direction: rtl;
+            background: linear-gradient(135deg, #f0f4ff 0%, #f9f0ff 100%);
         }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .header {
+        .hero {
+            padding: 4rem 2rem;
             text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            margin: 2rem 0;
-            width: 100%;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+            margin-bottom: 2rem;
         }
 
-        .header h1 {
-            font-size: 3.5rem;
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #333;
             margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        .header p {
-            font-size: 1.4rem;
-            opacity: 0.9;
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        .telegram-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            text-align: center;
-            width: 100%;
-            max-width: 600px;
-            margin: 2rem 0;
-            transition: transform 0.3s ease;
+        .contact-info {
+            margin-top: 2rem;
+            color: #555;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        .telegram-card:hover {
-            transform: translateY(-5px);
+        .contact-info p {
+            margin-bottom: 1rem;
         }
 
-        .telegram-logo {
-            width: 80px;
-            height: 80px;
-            background: #0088cc;
-            border-radius: 50%;
+        .social-buttons {
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
-        .telegram-logo svg {
-            width: 40px;
-            height: 40px;
-            fill: white;
-        }
-
-        .secondary-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .secondary-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .secondary-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: #0088cc;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
-        }
-
-        .button:hover {
-            background: #0099e6;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
-        }
-
-        .secondary-button {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            box-shadow: none;
-            padding: 0.8rem 1.5rem;
-        }
-
-        .secondary-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .feature-list {
-            margin: 2rem 0;
-            text-align: right;
-            list-style: none;
-            padding: 0 1rem;
-        }
-
-        .feature-list li {
-            margin-bottom: 1rem;
-            display: flex;
+        .social-button {
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .feature-list li::before {
-            content: "✓";
-            color: #4CAF50;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            justify-content: center;
         }
 
-        .animated-text {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .instagram-button {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+
+        .instagram-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(326px, 1fr));
+            gap: 2rem;
             padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
-            text-align: center;
-            font-size: 1.2rem;
-            width: 100%;
-            max-width: 600px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .footer {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            margin-top: auto;
-            width: 100%;
-            max-width: 600px;
+        .instagram-post {
+            opacity: 0;
+            transform: scale(0.9);
+            display: flex;
+            justify-content: center;
+        }
+
+        .icon {
+            font-size: 1.3rem;
         }
 
         @media (max-width: 768px) {
-            .container {
+            .instagram-grid {
                 padding: 1rem;
+                gap: 1rem;
             }
             
-            .header h1 {
-                font-size: 2.5rem;
+            .hero h1 {
+                font-size: 2rem;
             }
-            
-            .telegram-card {
-                padding: 2rem;
+
+            .social-button {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header animate__animated animate__fadeIn">
-            <h1>بغيدار</h1>
-            <p>احصل على إشعارات فورية عن منزل أحلامك في المغرب</p>
-        </header>
-
-        <div class="telegram-card animate__animated animate__fadeInUp">
-            <div class="telegram-logo">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.53-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.24.37-.49 1.03-.74 4.03-1.75 6.72-2.91 8.07-3.48 3.85-1.63 4.64-1.91 5.17-1.92.11 0 .37.03.54.18.17.15.21.34.23.48.02.14.01.29 0 .33z"/>
-                </svg>
-            </div>
-            <h2>لا تفوت أي عقار جديد</h2>
-            <ul class="feature-list">
-                <li>إشعارات فورية للعقارات الجديدة في منطقتك</li>
-                <li>تنبيهات مخصصة حسب تفضيلاتك</li>
-                <li>وصول مباشر إلى تفاصيل وصور العقار</li>
-                <li>تواصل سهل مع أصحاب العقارات</li>
-            </ul>
-            <a href="https://t.me/baghidar_bot" target="_blank" class="button">ابدأ في تلقي الإشعارات الآن</a>
-        </div>
-
-        <div class="secondary-cards">
-            <div class="secondary-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
-                <h3>تابع تحديثاتنا</h3>
-                <p>احصل على آخر رؤى العقارات واتجاهات السوق</p>
-                <a href="https://www.instagram.com/baghidar.ma" target="_blank" class="button secondary-button">تابعنا على انستغرام</a>
-            </div>
-
-            <div class="secondary-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
-                <h3>بيع عقارك</h3>
-                <p>دع خبراءنا يساعدونك في الحصول على أفضل قيمة</p>
-                <a href="https://www.instagram.com/baghidar.ma" class="button secondary-button">تواصل مع فريقنا</a>
+    <div class="hero">
+        <h1>🏡 Baghi Dar</h1>
+        <p>Votre partenaire immobilier de confiance au Maroc 🇲🇦</p>
+        <div class="contact-info">
+            <p>📧 abdellatif@baghidar.ma</p>
+            <div class="social-buttons">
+                <a href="https://wa.me/66923759146" class="social-button whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp icon"></i>
+                    +66 92 375 9146
+                </a>
+                <a href="https://www.instagram.com/baghidar.ma" class="social-button instagram-button" target="_blank">
+                    <i class="fab fa-instagram icon"></i>
+                    @baghidar.ma
+                </a>
             </div>
         </div>
-
-        <div id="animated-text" class="animated-text animate__animated animate__fadeIn"></div>
-
-        <footer class="footer">
-            <a href="https://baghidar.ma" target="_blank" class="button secondary-button">زر موقعنا baghidar.ma</a>
-        </footer>
     </div>
 
+    <div class="instagram-grid">
+        <!-- Instagram posts will be dynamically added here -->
+    </div>
+
+    <script async src="//www.instagram.com/embed.js"></script>
     <script>
-        const text = "أبحث عن منزل في الجديدة، سيدي بنور، ميزانيتي بين 10000 و 10000000 درهم.";
-        let index = 0;
+        const posts = [
+            'DB6yA9nJbuT', 'DB6yKznJNCC', 'DB6zI-IpDUC', 'DB7PEbipUzW',
+            'DB7S92yJBhE', 'DB7XPmvJDbr', 'DB7_RcKscHz', 'DB7bC-AJn4D',
+            'DB7j9qtJiKl', 'DB7oOhdpSr6', 'DB7rB0BJdPK', 'DB7tmMTNecH',
+            'DB7xMOXtfyr'
+        ];
 
-        function typeWriter() {
-            if (index < text.length) {
-                document.getElementById("animated-text").innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, 100);
+        // Animate hero section
+        gsap.to('.hero h1', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.2
+        });
+
+        gsap.to('.hero p', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.4
+        });
+
+        gsap.to('.contact-info', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.6
+        });
+
+        gsap.to('.social-buttons', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.8
+        });
+
+        // Create and animate Instagram posts
+        const grid = document.querySelector('.instagram-grid');
+        
+        posts.forEach((postId, index) => {
+            const post = document.createElement('div');
+            post.className = 'instagram-post';
+            
+            // Using the actual Instagram embed code
+            post.innerHTML = `
+                <blockquote 
+                    class="instagram-media" 
+                    data-instgrm-captioned 
+                    data-instgrm-permalink="https://www.instagram.com/p/${postId}/?utm_source=ig_embed&utm_campaign=loading" 
+                    data-instgrm-version="14"
+                    style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                </blockquote>
+            `;
+            
+            grid.appendChild(post);
+
+            gsap.to(post, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.5,
+                delay: 0.1 * index + 1
+            });
+        });
+
+        // Reinitialize Instagram embeds when they're added to the page
+        setInterval(function() {
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
             }
-        }
-
-        window.onload = typeWriter;
+        }, 1000);
     </script>
 </body>
 </html>
